@@ -59,8 +59,20 @@ round-tripped at 0.01 SOL or more, with max drawdown under 50%.
 
 Graded with the kit's own grader (`grade-local`, process driver) on the
 dev window, and on rebuilt stress copies of it. The variant shipped here
-was picked for the best stress median, not the luckiest dev score — see
-`main.ts` for the full reasoning.
+was picked for the best stress median, not the luckiest dev score.
+
+| variant | dev net PnL | stress median (10 copies) | stress p10 / p90 | coins | win rate | max drawdown |
+|---|---|---|---|---|---|---|
+| **v1 (this bot)** | **−0.034 SOL** | **−0.06 SOL** | −0.18 / −0.01 | 72 | 31.9% | 1.34% |
+| v2 trail keep 92% | −0.054 SOL | −0.07 SOL | −0.19 / −0.01 | 72 | 31.9% | 1.45% |
+
+v2 was tried and rejected on evidence: worse on dev and worse on stress.
+The shipped bot is v1 with the rejected experiment documented in
+`main.ts`. Guardrails met with room to spare (72 round trips ≥ 0.01 SOL,
+drawdown 1.34% vs the 50% cap), and the two grading executions reproduce
+byte for byte. Honest expectation: dev is breakeven and 9 of 10 stress
+copies lose money — the final 6-hour window is a lottery over fresh
+coins, and this is the most robust variant found, not the luckiest.
 
 ## Determinism
 

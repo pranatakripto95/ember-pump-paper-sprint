@@ -23,7 +23,11 @@
 //     that proved it can run. One buy per mint, ever. Stake 0.05 SOL.
 //   - exits: stop loss -10%, take profit +35%, and a trailing stop that
 //     arms at +20% and sells if the position falls to 88% of its peak, so
-//     2-10x runners are banked instead of capped. A stall exit frees slots
+//     2-10x runners are banked instead of capped. (A tighter 92% keep was
+//     tried as v2 and rejected on evidence: dev -0.054 vs -0.034 SOL and
+//     stress median -0.07 vs -0.06 SOL — the extra slack saves more
+//     runners than it gives back.)
+//     A stall exit frees slots
 //     held > ~6 min under water, and no position squats longer than
 //     ~16 min below +15%.
 //   - a buy counts only when it FILLS. A rejected or failed buy is retried
